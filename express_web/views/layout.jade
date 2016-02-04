@@ -20,13 +20,15 @@ html
                     a.navbar-brand(href='#') Project name
                 #navbar.collapse.navbar-collapse
                         ul.nav.navbar-nav 
-                            li.active
-                                a(href='#') Home
-                            li
-                                a(href='#about') About
-                            li
-                                a(href='#contact') Contact
+                            li(class=(title === 'Home' ? 'active' :''))
+                                a(href='/') Home
+                            li(class=(title === 'About' ? 'active' :''))
+                                a(href='/about') About
+                            li(class=(title === 'Contact' ? 'active' :''))
+                                a(href='/contactUs') Contact
     block content
+    footer
+        p &copy; 2015, All Right Reserved
 
     script( src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" )
     script( src="/javascripts/bootstrap.min.js")
