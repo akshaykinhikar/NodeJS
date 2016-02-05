@@ -3,17 +3,18 @@ extends layout
 block content
 	.container.container_nav
 		.row
-			form(method='post', action='contact/send')
+			form(method='post', action='contactUs/send')
 				.col-sm-8.col-sm-offset-2
 					h3 Contact Us 
-					h4	Name
-					input.form-control
-					h4	Email
-					input.form-control
-					h4	Mobile Number
-					input.form-control
-					h4	Message
-					textarea.form-control
+					.form-group
+						h4	Name
+						input.form-control(type="text", name='name', placeholder="Enter Name")
+					.form-group
+						h4	Email
+						input.form-control(type="email", name='email', placeholder="Enter Email")
+					.form-group
+						h4	Message
+						input.form-control(type="text", name='msg', placeholder="Enter msg")
 					.btn.btn-primary(type='submit') Submit
 
 
