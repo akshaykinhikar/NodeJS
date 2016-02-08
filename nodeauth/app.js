@@ -66,11 +66,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //flash
-// app.use(flash());
-// app.use(function(req, res, next){
-//   res.locals.message = require('express-message')(req, res);
-//   next();
-// });
+app.use(flash());
+app.use(function(req, res, next){
+  res.locals.message = require('express-messages')(req, res);
+  next();
+});
 app.use('/', routes);
 app.use('/users', users);
 
