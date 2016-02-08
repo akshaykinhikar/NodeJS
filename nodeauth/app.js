@@ -25,7 +25,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 // Handle file Upload
-app.use(multer({dest: './uploads'}));
+// app.use(multer({dest: './uploads'}));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -66,11 +66,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //flash
-app.use(flash());
-app.use(function(req, res, next){
-  res.locals.message = require('express-message')(req, res);
-  next();
-});
+// app.use(flash());
+// app.use(function(req, res, next){
+//   res.locals.message = require('express-message')(req, res);
+//   next();
+// });
 app.use('/', routes);
 app.use('/users', users);
 
