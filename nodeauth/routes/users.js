@@ -18,4 +18,28 @@ router.get('/login', function(req, res, next){
 	});
 });
 
+route.post('/users/register', function(req,res,next){
+	var name = req.body.name;
+	var email = req.body.email;
+	var userName = req.body.userName;
+	var password = req.body.password;
+	var password2 = req.body.password2;
+	var password2 = req.body.password2;
+});
+
+	if(req.file.profileImage){
+		console.log('Uploading Image');
+
+		//file Info
+		var profileImageOriginalName = req.files.profileImage.originalName;
+		var profileImageName = req.files.profileImage.Name;
+		var profileImageMime = req.files.profileImage.mimetype;
+		var profileImagePath = req.files.profileImage.path;
+		var profileImageSize = req.files.profileImage.size;
+	}else{
+		//set default Image
+		var profileImageName = 'noimage.png'
+
+	}
+
 module.exports = router;
