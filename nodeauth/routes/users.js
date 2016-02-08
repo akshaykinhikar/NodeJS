@@ -27,19 +27,19 @@ router.post('/register', function(req,res,next){
 	var password2 = req.body.password2;
 
 
-	if(req.file.profileImage){
-		console.log('Uploading Image');
+	// if(req.file.profileImage){
+	// 	console.log('Uploading Image');
 
-		//file Info
-		var profileImageOriginalName = req.files.profileImage.originalName;
-		var profileImageName = req.files.profileImage.Name;
-		var profileImageMime = req.files.profileImage.mimetype;
-		var profileImagePath = req.files.profileImage.path;
-		var profileImageSize = req.files.profileImage.size;
-	}else{
-		//set default Image
-		var profileImageName = 'noimage.png'
-	}
+	// 	//file Info
+	// 	var profileImageOriginalName = req.files.profileImage.originalName;
+	// 	var profileImageName = req.files.profileImage.Name;
+	// 	var profileImageMime = req.files.profileImage.mimetype;
+	// 	var profileImagePath = req.files.profileImage.path;
+	// 	var profileImageSize = req.files.profileImage.size;
+	// }else{
+	// 	//set default Image
+	// 	var profileImageName = 'noimage.png'
+	// }
 
 	req.checkBody('name', 'Name filed is required').notEmpty();
 	req.checkBody('email', 'email filed is required').notEmpty();
@@ -57,7 +57,7 @@ router.post('/register', function(req,res,next){
 			errors : errors,
 			name : name,
 			email : email,
-			username : username,
+			userName : userName,
 			password : password,
 			password2 : password2
 		});
@@ -65,9 +65,9 @@ router.post('/register', function(req,res,next){
 		var newUser = new User({
 			name : name,
 			email : email,
-			username : username,
+			userName : userName,
 			password : password,
-			profileImage : profileImageName
+			// profileImage : profileImageName
 		}); 
 
 		//create user

@@ -3,7 +3,7 @@ block content
 	.container
 		h1 register
 		h3 Plz register
-		form(method='post', action='/user/register', enctype='multipart/form-data')
+		form(method='post', action='/users/register', enctype='multipart/form-data')
 			.form-group
 				label name
 				input.form-control(name='name', type='text', placeholder='name')
@@ -19,7 +19,4 @@ block content
 			.form-group
 				label Password
 				input.form-control(name='password2', type='text', placeholder='Password')
-			.form-group
-				label profile Image
-				input.form-control(name='profileImage', type='file')
 			input.btn.btn-default(name='submit', type='submit', value='register')

@@ -26,6 +26,8 @@ app.set('view engine', 'jade');
 
 // Handle file Upload
 // app.use(multer({dest: './uploads'}));
+// var upload = multer({ dest: 'uploads/' })
+// app.use(upload);
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
