@@ -1,0 +1,14 @@
+extends layout
+block content
+	.container
+		.row
+			.col-sm-4.col-sm-offset-4
+				h1 Login
+				form(method='post', action='/user/register', enctype='multipart/form-data')
+					.form-group
+						label userName
+						input.form-control(name='userName', type='text', placeholder='userName')
+					.form-group
+						label Password
+						input.form-control(name='password', type='text', placeholder='Password')
+					input.btn.btn-default(name='submit', type='submit', value='Login')
