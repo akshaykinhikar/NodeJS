@@ -8,7 +8,7 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 
 var mongo = require('mongodb');
-var db = require('monk')('http://localhost/nodeblog');
+var db = require('monk')('http://localhost:27017/nodeblog');
 var multer = require('multer');
 var flash = require('connect-flash');
 
