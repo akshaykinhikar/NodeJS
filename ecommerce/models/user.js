@@ -5,14 +5,14 @@ var Schema = mongoose.Schema;
 /* User schema attributes / characterestics / fields */
 var UserSchema = new Schema({
    email: { type: String, unique: true, lowercase: true },
-   password: string,
+   password: String,
    
    profile: {
        name: { type: String, default: '' },
        picture: { type: String, default: '' }
    },
    
-   address: string,
+   address: String,
    history: [{
        date: Date,
        paid: { type: Number, default: 0 },
@@ -24,7 +24,7 @@ var UserSchema = new Schema({
 /* Hash the password even befor we save to the database */
 
 UserSchema.pre('save', function(next){
-   var user= this;
+   var user = this;
    if(!user.isModified('password')) return next();
    bcrypt.genSalt(10, function(err, salt){
        if(err) return next(err);

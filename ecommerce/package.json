@@ -18,6 +18,8 @@
   "homepage": "https://github.com/akshaykinhikar/NodeJS#readme",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "mongoose": "^4.13.9",
     "morgan": "^1.9.0"
