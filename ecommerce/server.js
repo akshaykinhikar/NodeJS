@@ -2,6 +2,8 @@ var express = require('express');
 var morgan = require('morgan'); // middleware
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+var ejs = require('ejs');
+var ejsMate = require('ejs-mate');
 
 var User = require('./models/user');
 
@@ -37,6 +39,8 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.engine('ejs', ejsMate);
+app.set('view engine', 'ejs');
 
 //API
 app.post('/create-user', function(req, res, next){
@@ -47,16 +51,17 @@ app.post('/create-user', function(req, res, next){
     user.profile.email = req.body.email;
     
     user.save(function(err){
-        if(err) next(err);
+        if(err) return next(err);
         
         res.json('Successfully created a new user');
     })
     
 })
 
-// app.get('/', function(req, res){
+app.get('/', function(req, res){
 //    res.json('my name is akshay'); 
-// });
+   res.render('home');
+});
 
 app.listen(3000, function(err) {
     if(err) throw err;
