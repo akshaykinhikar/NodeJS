@@ -1,0 +1,19 @@
+{
+  "name": "ecommerce",
+  "version": "1.0.0",
+  "description": "ecommerce web, where we can see product, add products to cart and make payment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akshaykinhikar/NodeJS.git"
+  },
+  "author": "akshaykinhikar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akshaykinhikar/NodeJS/issues"
+  },
+  "homepage": "https://github.com/akshaykinhikar/NodeJS#readme"
+}
