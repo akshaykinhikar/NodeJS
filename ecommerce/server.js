@@ -44,26 +44,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
 
-//API
-app.post('/create-user', function(req, res, next){
-    var user = new User();
-    
-    user.profile.name = req.body.name;
-    user.profile.password = req.body.password;
-    user.profile.email = req.body.email;
-    
-    user.save(function(err){
-        if(err) return next(err);
-        
-        res.json('Successfully created a new user');
-    })
-    
-})
+var mainRoutes = require('./routes/main');
+app.use(mainRoutes);
 
-app.get('/', function(req, res){
-//    res.json('my name is akshay'); 
-   res.render('main/home');
-});
+var userRoutes = require('./routes/user');
+app.use(userRoutes);
 
 app.listen(3000, function(err) {
     if(err) throw err;
