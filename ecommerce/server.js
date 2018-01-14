@@ -11,11 +11,11 @@ var session = require('express-session');
 var cookieParser = require('cookie-parser');
 var flash = require('express-flash');
 
+var secret = require('./config/secret');
 var User = require('./models/user');
 
 var app = express();
 
-var DBURL = 'mongodb://akshaykinhikar:thisispassword@ds247347.mlab.com:47347/ecommerce-node';
 
 //  // Use bluebird
 // var options = { promiseLibrary: require('bluebird') };
@@ -31,7 +31,7 @@ var DBURL = 'mongodb://akshaykinhikar:thisispassword@ds247347.mlab.com:47347/eco
 //     }
 // })
 
-mongoose.connect(DBURL);
+mongoose.connect(secret.database);
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -51,7 +51,7 @@ app.use(cookieParser());
 app.use(session({
   resave: true,
   saveUninitialized: true,
-  secret: "akshay@123"
+  secret: secret.secretKey,
 }));
 app.use(flash());
 
@@ -65,7 +65,7 @@ app.use(mainRoutes);
 var userRoutes = require('./routes/user');
 app.use(userRoutes);
 
-app.listen(3000, function(err) {
+app.listen(secret.port, function(err) {
     if(err) throw err;
     console.log("server is running on 3000");
 });
