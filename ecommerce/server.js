@@ -35,6 +35,8 @@ db.once('open', function() {
 });
 
 //Middleware
+app.use(express.static(__dirname + '/public'));
+
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -60,7 +62,7 @@ app.post('/create-user', function(req, res, next){
 
 app.get('/', function(req, res){
 //    res.json('my name is akshay'); 
-   res.render('home');
+   res.render('main/home');
 });
 
 app.listen(3000, function(err) {
