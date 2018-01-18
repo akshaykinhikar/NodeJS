@@ -39,7 +39,7 @@ UserSchema.pre('save', function(next){
 
 /* Compare password in the database and the one that the user type in */
 
-UserSchema.methods.comparePassword = function(password){
+UserSchema.methods.comparePassword = function(password){ //custom method
     return bcrypt.compareSync(password, this.password);
 }
 

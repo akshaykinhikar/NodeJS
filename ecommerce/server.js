@@ -18,21 +18,6 @@ var User = require('./models/user');
 
 var app = express();
 
-
-//  // Use bluebird
-// var options = { promiseLibrary: require('bluebird') };
-// var db = mongoose.createConnection(uri, options);
-
-// // mongoose.Promise = global.Promise;
-// mongoose.Promise = require('bluebird');
-// mongoose.createConnection(DBURL, options, function(err){ //connect
-//     if(err){
-//         console.log("Err", err);
-//     } else {
-//         console.log("connected to database");
-//     }
-// })
-
 mongoose.connect(secret.database);
 
 var db = mongoose.connection;
@@ -58,7 +43,7 @@ app.use(session({
   resave: true,
   saveUninitialized: true,
   secret: secret.secretKey,
-  store: new MongoStore({url: secret.database, autoReconnect: true }),
+  store: new MongoStore({url: secret.database, autoReconnect: true, collection: 'sessions'}),
   // cookie: {
   //   maxAge: 3600000 //1 Hour
   // }
@@ -66,7 +51,6 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
-
 
 app.use(flash());
 
