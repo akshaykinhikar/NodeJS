@@ -24,7 +24,7 @@ passport.use('local-login', new LocalStrategy({
 }, function(req, email, password, done){
     User.findOne({email: email }, function(err, user){
         if(err) return done(err);
-        
+        console.log(user);
         if(!user){
             return done(null, false, req.flash('loginMessage', 'No user has been found'));
         }
@@ -39,7 +39,7 @@ passport.use('local-login', new LocalStrategy({
 
 // custom function to validate
 exports.isAuthenticated = function(req, res, next) {
-    if (req.isAuthenticated){
+    if (req.isAuthenticated()){
         return next();
     } else {
         res.redirect('/login');

@@ -5,18 +5,25 @@ var passportCong = require('../config/passport');
 
 //API
 router.get('/login', function(req, res) {
+    console.log("User: " + req.user);
+    console.log("Authenticated?: " + req.isAuthenticated());
     if (req.user) return res.redirect('/');
-    res.render('accounts/login', {message: req.flash('loginMessage')});
+    res.render('accounts/login', { message: req.flash('loginMessage') });
 });
+
 
 router.post('/login', passport.authenticate('local-login', {
     successRedirect: '/profile',
     failureRedirect: '/login',
-    failureFlash: true,
+    failureFlash: true
 }));
 
-router.get('/profile', function(req, res){
-    res.json(req.user);
+router.get('/profile', function(req, res, next){
+    User.findOne({ _id: req.user._id }, function(err, user) {
+        if (err) return next(err);
+        res.render('accounts/profile', { user: user });
+    });
+    // res.json(req.user);
 });
 router.get('/signup', function(req, res, next){
     res.render('accounts/signup', {
@@ -28,10 +35,10 @@ router.post('/signup', function(req, res, next){
     var user = new User();
     
     user.profile.name = req.body.name;
+    user.email = req.body.email;    
     user.password = req.body.password;
-    user.email = req.body.email;
 
-    User.findOne({email: req.body.email}, function(err, existingUser) {
+    User.findOne({ email: req.body.email }, function(err, existingUser) {
         if(existingUser){
             // console.log(req.body.email + "is alread exist");
             req.flash('errors', 'account with that email address alread exists');
