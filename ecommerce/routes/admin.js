@@ -13,8 +13,11 @@ router.post('/add-category', function(req, res, next){
 
     category.save(function(err) {
         if(err) return next(err);
-
-        req.flash({ message: 'Created successfully'});
-        return res.redirect('/add-categoty');
+        
+        req.flash('success', 'Created successfully');
+        
+        return res.redirect('/add-category');
     })
 })
+
+module.exports = router;

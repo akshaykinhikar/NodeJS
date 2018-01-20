@@ -69,6 +69,9 @@ app.use(mainRoutes);
 var userRoutes = require('./routes/user');
 app.use(userRoutes);
 
+var adminRoutes = require('./routes/admin');
+app.use(adminRoutes);
+
 
 app.listen(secret.port, function(err) {
     if(err) throw err;
