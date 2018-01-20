@@ -1,4 +1,7 @@
 <% layout('layout') -%>
 <p>Profile </p>
 
-<%= user.profile.name %>
+<img src="<%= user.profile.picture %>" alt="">
+<p><%= user.profile.name %></p>
+<p><%= user.email %></p>
+<p><%= user.profile.address %></p>
