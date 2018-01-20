@@ -16,6 +16,8 @@ var MongoStore = require('connect-mongo')(session);
 var secret = require('./config/secret');
 var User = require('./models/user');
 
+var Category = require('./models/category');
+
 var app = express();
 
 mongoose.connect(secret.database);
@@ -47,6 +49,14 @@ app.use(session({
   //   maxAge: 3600000 //1 Hour
   // }
 }));
+
+app.use(function(req, res, next) {
+  Category.find({}, function(err, categories) {
+    if(err) return next(err);
+    res.locals.categories = categories;
+    next();
+  })
+})
 
 app.use(passport.initialize());
 app.use(passport.session());
