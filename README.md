@@ -1,6 +1,6 @@
 # Concepts to enhance NodeJS develpopment
 
-##### What is Promise and which scenarios which promise should be used
+##### What is Promise and in which different scenarios promise methods should be used
 
 <details><summary><b>Answer</b></summary>
 <p> To perform any async operation we use promise. Promises have 3 states - Pending, resolved and rejected<p>
@@ -41,7 +41,7 @@ Promise.all([firstPromise,secondPromise,thirdPromise]).then((res)=> {
 
 #####
 ```javascript
-
+//Promise.all
 (3) ['hello from firstPromise', 'hello from secondPromise', 'hello from thirdPromise']
 // below will be output in case of promise.all reject
 hello from thirdPromise
