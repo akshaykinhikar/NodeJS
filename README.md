@@ -35,11 +35,9 @@ const thirdPromise = new Promise((resolve,reject) => {
 Promise.all([firstPromise,secondPromise,thirdPromise]).then((res)=> {
     console.log(res);
 })
-  
 ```
 <p>Output</p>
 
-#####
 ```javascript
 //Promise.all
 (3) ['hello from firstPromise', 'hello from secondPromise', 'hello from thirdPromise']
@@ -68,7 +66,51 @@ hello from thirdPromise
 //race
 "hello from firstPromise"
 
+```
+</details>
 
+
+##### What is Event Emitter
+
+
+<details><summary><b>Answer</b></summary>
+
+
+```javascript
+const events = require('events');
+
+
+const event = new events.EventEmitter();
+
+const myCLBListener = (data)=> {
+    console.log('Hey A is listening ...,' + data);
+}
+
+event.on('A', myCLBListener);
+
+event.on('B', ()=> {
+    console.log('Hey B is listening ...,')
+});
+
+event.emit('A', ['lorem','ipsome']);
+event.emit('B');
+event.removeListener('A', myCLBListener);
+event.emit('A', ['lorem','ipsome']);
+console.log('I guess A is removed');
+
+event.emit('B');
+
+event.removeAllListeners();
 ```
 
+<p>Output</p>
+
+```javascript
+Hey A is listening ...,lorem,ipsome
+Hey B is listening ...,
+I guess A is removed
+Hey B is listening ...,
+
+```
+</details>
 
